@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My blog</title>
+</head>
+<body>
+{% for post in i %}
+    <div>
+        <h1><a href="">{{post.author}} blog</a></h1>
+        <p>published: {{ post.created_date }}</p>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
+</body>
+</html>
