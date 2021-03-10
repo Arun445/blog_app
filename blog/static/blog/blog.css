@@ -1,0 +1,45 @@
+body {
+    font-family: 'Inconsolata', monospace;
+    text-decoration: none;
+
+
+}
+
+a {
+   text-decoration: none;
+   color: gray;
+}
+
+.page-header {
+    background-color: #333;
+    padding: 14px 16px;
+    margin: 10px;
+    display: block;
+
+}
+
+.page-header h1, .page-header a {
+    color: white;
+    font-size: 36pt;
+
+}
+.page-header a:hover {
+    color: gray;
+
+}
+
+.content {
+    padding-top: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.date {
+    color: #CD5C5C;
+}
+
+.post {
+    margin-bottom: 60px;
+}
+
+
