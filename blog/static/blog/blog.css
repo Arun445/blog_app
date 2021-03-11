@@ -18,7 +18,7 @@ a {
 
 }
 
-.page-header h1, .page-header a {
+.page-header h1 a {
     color: white;
     font-size: 36pt;
 
@@ -47,5 +47,14 @@ a {
 }
 .post-form-blog button {
     float: right;
+}
+
+.top-menu {
+    color: white;
+    float: right;
+    font-size: 20pt;
+    margin-right: -10px;
+    margin-top: -15px;
+
 }
 
