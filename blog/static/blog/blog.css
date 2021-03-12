@@ -61,3 +61,10 @@ a {
     margin-top: -10px;
 
 }
+.top-menu button {
+    color:white;
+}
+
+.sign-in button:hover {
+    color:gray;
+}

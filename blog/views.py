@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 
 #Renders all blog posts
@@ -25,6 +26,7 @@ def post_detail(request, pk):
 
 # Create a new post
 
+@login_required
 def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST or None)
@@ -40,7 +42,7 @@ def post_new(request):
 
 
 # Update an existing post
-
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -52,11 +54,12 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-        context = {'form': form}
+        context = {'form': form, 'post':post}
         return render(request, 'blog/post_edit.html', context)
 
-#Shows all the posts that are created, but aren't published yet
 
+#Shows all the posts that are created, but aren't published yet
+@login_required
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True)
     context = {'posts': posts}
@@ -65,7 +68,7 @@ def post_draft_list(request):
 
 
 #Publishes a post
-
+@login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()

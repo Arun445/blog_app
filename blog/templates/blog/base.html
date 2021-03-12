@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My blog</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
@@ -20,6 +20,9 @@
     {% if user.is_authenticated %}
         <a href="{% url 'post_draft_list' %}" class="top-menu"><i class="fas fa-book-open"></i></a>
         <a href="{% url 'post_new' %}" class="top-menu"><i class="fas fa-plus"></i></a>
+    {% else %}
+        <a href="{% url 'login' %}" class="sign-in top-menu"><button class="ml-2 ml-lg-0 btn btn-sm btn px-3">sign-in</button></a>
+        <a href="{% url 'login' %}" class="top-menu"><button class="ml-2 ml-lg-0 btn btn-sm btn-primary px-3">sign-up</button></a>
     {% endif %}
     <h1><a href="{% url 'post_list' %}" class="middle">My blog</a></h1>
 
