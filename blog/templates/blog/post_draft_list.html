@@ -10,7 +10,7 @@
         <div class="post">
             <p class="date">created: {{ post.created_date|date:'Y-m-d' }}</p>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|truncatechars:50|linebreaksbr }}</p>
+            <p>{{ post.text |truncatechars:50 |linebreaksbr }}</p>
         </div>
 {% endif %}
     {% endfor %}

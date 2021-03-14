@@ -1,1 +1,1 @@
-web: gunicorn the-aron-blog-app.wsgi
+web: gunicorn blog_app.wsgi
