@@ -29,26 +29,36 @@
 <hr>
 <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-secondary" >Add comment</a>
 {% for comment in post.comments.all %}
-    <div class="comment">
+    {% if comment.approved or user.is_superuser %}
+        <div class="comment">
 
-        <div class="flex-comment">
-            <div class="date">
-                {{ comment.created_date }}<a href="{% url 'comment_remove' pk=comment.pk %}" class="delete_button"><i class="far fa-trash-alt"></i></a>
-            </div>
-            <div>
-                <strong>{{ comment.author }}</strong>
-            </div>
-            <div>
-                <p>{{ comment.text }}</p>
+            <div class="flex-comment">
+                <div>
+
+                </div>
+                <div class="date">
+                    {% if not comment.approved and user.is_superuser %}
+                        <a href="{% url 'comment_approve' pk=comment.pk %}"><i class="fas fa-check"></i></a>
+                    {% endif %}
+                    {{ comment.created_date }}
+                    {% if comment.author == user.username or user.is_superuser %}
+                        <a href="{% url 'comment_remove' pk=comment.pk %}" class="delete_button"><i class="far fa-trash-alt"></i></a>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <strong>{{ comment.author }}</strong>
+                </div>
+                <div>
+                    <p>{{ comment.text }}</p>
+                </div>
+
             </div>
 
         </div>
-
-    </div>
-
-    {% empty %}
-
-        <p class="no-comment">No comments yet....</p>
+    {% endif %}
+{% empty %}
+    <p class="no-comment">No comments yet....</p>
 
 {% endfor %}
 
