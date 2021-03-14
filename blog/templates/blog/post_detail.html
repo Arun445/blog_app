@@ -15,10 +15,10 @@
         </div>
 
     {% else %}
-        <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
+        <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-success">Publish</a>
     {% endif %}
 
-    {% if user.is_authenticated %}
+    {% if post.author.username == user.username %}
       <a href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-edit fa-2x"></i></a>
     <a href="{% url 'post_delete' pk=post.pk %}" class="delete-post" onclick="return confirm('Are you sure you want to delete this post?')"><i class="delete-post fas fa-eraser fa-2x"></i></a>
     {% endif %}

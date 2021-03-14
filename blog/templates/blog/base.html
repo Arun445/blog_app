@@ -30,7 +30,7 @@
 
         {% else %}
             <a href="{% url 'login' %}" class="sign-in top-menu"><button class="btn btn ">Log-in</button></a>
-            <a href="/accounts/sign-up/" class="sign-up top-menu"><button class="btn btn-primary ">Sign-up</button></a>
+            <a href="{% url 'signup' %}" class="sign-up top-menu"><button class="btn btn-primary ">Sign-up</button></a>
         {% endif %}
         <h1><a href="{% url 'post_list' %}" class="middle">My blog</a></h1>
 

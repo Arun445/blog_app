@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 
 #Renders all blog posts
@@ -62,6 +66,7 @@ def post_edit(request, pk):
 @login_required
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True)
+    print(posts)
     context = {'posts': posts}
 
     return render(request, 'blog/post_draft_list.html', context)
@@ -118,3 +123,17 @@ def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
     return redirect('post_detail', pk=comment.post.pk)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            #new_user = User.objects.create_user(**form.cleaned_data)
+            username = form.cleaned_data['username']
+            new_user = form.save()
+            login(request, new_user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
