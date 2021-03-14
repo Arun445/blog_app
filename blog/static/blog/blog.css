@@ -7,7 +7,7 @@ body {
 
 a {
    text-decoration: none;
-   color: gray;
+   color: #4169E1;
 }
 
 .page-header {
@@ -119,4 +119,8 @@ a {
 
 .no-comment {
     margin: 20px 0px 0px 0px;
+}
+
+.delete-post:hover {
+    color: red;
 }
