@@ -1,5 +1,5 @@
 body {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Lato', sans-serif;
     text-decoration: none;
 
 
@@ -11,24 +11,36 @@ a {
 }
 
 .page-header {
-    background-color: #333;
+    background-color: #4169E1;
     padding: 14px 16px;
-    margin: 10px;
     display: block;
+    width: 80%;
+    margin: auto;
 
 }
 
+.page-header p {
+
+}
+
+
 .page-header h1, .page-header a {
     color: white;
-    font-size: 24pt;
+    font-size: 26pt;
+
 
 
 }
 
 
 .page-header a:hover {
-    color: gray;
+    color: #B0E0E6;
 
+}
+
+
+.nav-bar {
+    background-color: #4169E1;
 }
 
 .content {
@@ -38,7 +50,7 @@ a {
 }
 
 .date {
-    color: #CD5C5C;
+    color: #333;
 }
 
 .post {
@@ -55,16 +67,26 @@ a {
 .top-menu {
     color: white;
     float: right;
-    font-size: 20pt;
+    font-size: 26pt;
     margin-right: 0px;
     margin-left: 20px;
-    margin-top: -10px;
+    margin-top: -5px;
 
 }
 .top-menu button {
     color:white;
+    border-radius: 20px;
+}
+
+.sign-up button {
+    background: #A52A2A;
+}
+
+.sign-up button:hover {
+    background: #C60606;
 }
 
 .sign-in button:hover {
-    color:gray;
+    color:#B0E0E6;
 }
+
