@@ -30,16 +30,26 @@
 <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-secondary" >Add comment</a>
 {% for comment in post.comments.all %}
     <div class="comment">
-        <div class="date">
-            {{ comment.created_date }}
+
+        <div class="flex-comment">
+            <div class="date">
+                {{ comment.created_date }}<a href="{% url 'comment_remove' pk=comment.pk %}" class="delete_button"><i class="far fa-trash-alt"></i></a>
+            </div>
+            <div>
+                <strong>{{ comment.author }}</strong>
+            </div>
+            <div>
+                <p>{{ comment.text }}</p>
+            </div>
+
         </div>
 
-        <p><strong>{{ comment.author }}</strong></p>
-        <p>{{ comment.text }}</p>
     </div>
 
     {% empty %}
-        <p>No comments yet....</p>
+
+        <p class="no-comment">No comments yet....</p>
+
 {% endfor %}
 
 {% endblock content %}

@@ -41,10 +41,12 @@ a {
 
 .nav-bar {
     background-color: #4169E1;
+    width: 100%;
+    position: fixed;
 }
 
 .content {
-    padding-top: 20px;
+    padding-top: 100px;
     max-width: 1000px;
     margin: auto;
 }
@@ -90,6 +92,31 @@ a {
     color:#B0E0E6;
 }
 
+.flex-comment {
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+
+}
+.flex-comment div {
+    display: flex;
+    padding: 10px;
+
+
+}
+
+.delete_button {
+    margin-left: auto;
+}
+
 .comment {
+
     margin: 20px 0px 20px 20px;
+}
+
+.no-comment {
+    margin: 20px 0px 0px 0px;
 }
