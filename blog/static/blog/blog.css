@@ -146,6 +146,12 @@ a {
 
 }
 
+.article-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+}
+
 .account-heading {
   font-size: 2.5rem;
 }

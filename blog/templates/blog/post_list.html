@@ -12,9 +12,9 @@
 
 {% for post in posts %}
     <div class="post">
-        <!--<h1><a href="">{{post.author}} blog</a></h1>-->
 
         <div class="date">
+            <a href=""><img class="article-img" src="{{ post.author.profile.image.url }}" ></a>
             <a href="">{{ post.author }}</a>
             <small> {{ post.published_date|date:'M d, Y' }}</small>
         </div>
