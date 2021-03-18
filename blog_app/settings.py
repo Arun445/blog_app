@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #--- MY APPS --
-    'blog',
+    'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
+    # -- THIRD PARTY APPS --
     'crispy_forms',
 ]
 
@@ -125,8 +127,15 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+MEDIA_ROOT = Path(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 django_heroku.settings(locals())
+
+
+
+
 

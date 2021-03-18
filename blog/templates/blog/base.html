@@ -21,10 +21,21 @@
 </head>
 
 <body>
+
+
 <div class="nav-bar">
     <div class="page-header">
         {% if user.is_authenticated %}
-            <p class="sign-up top-menu"><small> {{ user.username }} </small><a href="{% url 'logout' %}" ><button class="btn btn-sm btn-primary px-3">Logout</button></a></p>
+            <p class="sign-up top-menu">
+                <small>
+                    <a href="{% url 'profile' %}"> {{ user.username }} </a>
+                </small>
+
+                <a href="{% url 'logout' %}" >
+                    <button class="btn btn-sm btn-primary px-3">Logout</button>
+                </a>
+            </p>
+
             <a href="{% url 'post_new' %}" class="top-menu"><i class="fas fa-plus"></i></a>
             <a href="{% url 'post_draft_list' %}" class="top-menu"><i class="fas fa-book-open"></i></a>
 
@@ -32,7 +43,7 @@
             <a href="{% url 'login' %}" class="sign-in top-menu"><button class="btn btn ">Log-in</button></a>
             <a href="{% url 'signup' %}" class="sign-up top-menu"><button class="btn btn-primary ">Sign-up</button></a>
         {% endif %}
-        <h1><a href="{% url 'post_list' %}" class="middle">My blog</a></h1>
+            <h1><a href="{% url 'post_list' %}" class="middle">My blog</a></h1>
 
     </div>
 </div>
@@ -42,10 +53,29 @@
     <div class="row">
         <div class="col-md-8">
 
-{% block content %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
-{% endblock %}
+            {% block content %}
 
+            {% endblock %}
+        </div>
+            <div class="col-md-4">
+              <div class="content-section">
+                <h3>Our Sidebar</h3>
+                <p class='text-muted'> You can put any information here you'd like.
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">Latest Posts</li>
+                    <li class="list-group-item list-group-item-light">Announcements</li>
+                    <li class="list-group-item list-group-item-light">Calendars</li>
+                    <li class="list-group-item list-group-item-light">etc</li>
+                  </ul>
+              </div>
         </div>
     </div>
 </div>

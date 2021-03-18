@@ -7,13 +7,17 @@
 {% endblock %}
 
 {% block content %}
-
-    <h2>login</h2>
+<div class="content-section">
     <form method="post">
     {% csrf_token %}
-        {{ form|crispy }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Log In</legend>
+            {{ form|crispy }}
+        </fieldset>
+
+        <p>Don't have an account? Click <a href="{% url 'signup' %}">here</a></p>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
-
+</div>
 
 {% endblock content %}

@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login
+
 
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -125,15 +123,3 @@ def comment_approve(request, pk):
     return redirect('post_detail', pk=comment.post.pk)
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            #new_user = User.objects.create_user(**form.cleaned_data)
-            username = form.cleaned_data['username']
-            new_user = form.save()
-            login(request, new_user)
-            return redirect('/')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form})

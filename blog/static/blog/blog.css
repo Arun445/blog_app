@@ -10,12 +10,16 @@ a {
    color: #4169E1;
 }
 
+
+
+
 .page-header {
     background-color: #4169E1;
-    padding: 14px 16px;
+    padding: 10px 10px;
     display: block;
     width: 80%;
     margin: auto;
+    z-index: 1030;
 
 }
 
@@ -27,7 +31,6 @@ a {
 .page-header h1, .page-header a {
     color: white;
     font-size: 26pt;
-
 
 
 }
@@ -43,6 +46,7 @@ a {
     background-color: #4169E1;
     width: 100%;
     position: fixed;
+    z-index: 1030;
 }
 
 .content {
@@ -53,6 +57,7 @@ a {
 
 .date {
     color: #828282;
+    padding: 0px 0px 15px 0px;
 }
 
 .post {
@@ -124,3 +129,36 @@ a {
 .delete-post:hover {
     color: red;
 }
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.account-img {
+  height: 100px;
+  width: 100px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+

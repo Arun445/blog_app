@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %} Profile {% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+<h2>Profile settings</h2>
+<p>Create a media object with the .media and .media-body classes:</p>
+<div class="d-flex border p-3">
+    <img class="flex-shrink-0 mr-3 mt-3 rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div>
+        <h4> {{ user.username }} </h4>
+        <p class="text-secondary">{{ user.email }}</p>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

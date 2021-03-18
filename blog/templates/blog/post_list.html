@@ -8,12 +8,15 @@
 {% load markdownify %}
 
 
+
+
 {% for post in posts %}
     <div class="post">
         <!--<h1><a href="">{{post.author}} blog</a></h1>-->
 
         <div class="date">
-            <p>Published: {{ post.published_date }}</p>
+            <a href="">{{ post.author }}</a>
+            <small> {{ post.published_date|date:'M d, Y' }}</small>
         </div>
         <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
         <p>{{ post.text| markdown | safe | truncatechars:800 | linebreaksbr }}</p>
