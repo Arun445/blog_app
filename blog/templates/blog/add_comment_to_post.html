@@ -1,14 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% block title %}Add a comment{% endblock %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 
     <h1>New comment</h1>
     <form method="post" class="post-form-blog">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Post</button>
     </form>
 
