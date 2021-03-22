@@ -23,7 +23,12 @@
       <a href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-edit fa-2x"></i></a>
     <a href="{% url 'post_delete' pk=post.pk %}" class="delete-post" ><i class="delete-post fas fa-eraser fa-2x"></i></a>
     {% endif %}
+    {% if post.author != user %}
+        <a href="{% url 'user_posts' post.author.username %}"><img class="article-img" src="{{ post.author.profile.image.url }}" ></a>
+        <a href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
+    {% endif %}
     <hr>
+
     <h1>{{ post.title }}</h1>
     <p>{{ post.text| markdown | safe }}</p>
 

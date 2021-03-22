@@ -1,11 +1,15 @@
 from django.urls import path
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, AddCommentToPostView, CommentRemoveView
+from .views import (
+    PostListView, PostDetailView, PostCreateView,
+    PostUpdateView, PostDeleteView, AddCommentToPostView,
+    CommentRemoveView, UserPostListView)
 from . import views
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
     path('', PostListView.as_view(), name='post_list'),
+    path('user/<str:username>', UserPostListView.as_view(), name='user_posts'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
     path('post/new/', PostCreateView.as_view(), name='post_new'),
     path('post/<int:pk>/edit/', PostUpdateView.as_view(), name='post_edit'),
@@ -15,4 +19,5 @@ urlpatterns = [
     path('post/<int:pk>/comment', AddCommentToPostView.as_view(), name='add_comment_to_post'),
     path('comment/<int:pk>/delete', CommentRemoveView.as_view(), name='comment_remove'),
     path('comment/<int:pk>/approve', views.comment_approve, name='comment_approve'),
+
 ]

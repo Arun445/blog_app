@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -13,9 +14,21 @@ from .forms import PostForm, CommentForm
 class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
+    paginate_by = 5
 
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user)
+
 
 #Renders all blog posts using a function (old)
 '''
@@ -84,7 +97,6 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        print(self.kwargs.get('pk'))
         return super().form_valid(form)
 
     def test_func(self):

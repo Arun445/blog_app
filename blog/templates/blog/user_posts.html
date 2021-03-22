@@ -1,20 +1,20 @@
-
 {% extends 'blog/base.html' %}
 
-{% block title %} My blog {% endblock %}
-
+{% block title %} {{user}} {% endblock %}
 
 {% block content %}
+
+
 {% load markdownify %}
 
-
+    <h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
 
 
     {% for post in posts %}
         <div class="post">
 
             <div class="date">
-                <a href="{% url 'user_posts' post.author.username %}"><img class="article-img" src="{{ post.author.profile.image.url }}" ></a>
+                <a href=""><img class="article-img" src="{{ post.author.profile.image.url }}" ></a>
                 <a href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
                 <small> {{ post.published_date|date:'M d, Y' }}</small>
             </div>
@@ -24,7 +24,6 @@
             <hr>
         </div>
     {% endfor %}
-
     {% if is_paginated %}
 
         {% if page_obj.has_previous %}
@@ -46,4 +45,32 @@
     {% endif %}
 
 
+
+
+
+
+
+
+
+
+
+
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
