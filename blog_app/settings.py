@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_8(kmx15if+9x8dbv25wo@u6o7r*o)1e9w&j#0lklf(v&vgpm6'
+#SECRET_KEY = '_8(kmx15if+9x8dbv25wo@u6o7r*o)1e9w&j#0lklf(v&vgpm6'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myaronblogapp.herokuapp.com']
 
 
 # Application definition
@@ -127,6 +128,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
