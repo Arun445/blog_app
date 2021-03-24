@@ -9,7 +9,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-''' Removed because of S3 AWS
+''' Removed because of S3 AWS Bucket
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
