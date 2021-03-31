@@ -19,6 +19,7 @@ class PostListView(ListView):
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
+#Shows specific users ass post.
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
